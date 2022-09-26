@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<!--import roboto font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>image crawl</title>
+
+		<link rel="stylesheet" type="text/css" href="css/master.css">
+		<link rel="stylesheet" type="text/css" href="css/header-footer.css">
+		<link rel="stylesheet" type="text/css" href="css/form.css">
+
+	</head>
+
+	<body>
+		<header id="top">
+			<div class="head-logo">
+				<p class="head-page-firstline">Image</p>
+				<p class="head-page-secondline">Crawler</p>
+				<div class="head-circle">
+				</div>
+			</div>
+			<div class="head-frame">
+				<p class="head-myname">Yunqin Wang</p>
+				<p class="head-myidentity">Web Developer</p>
+			</div>
+			<div class="head-double-line">
+			</div>
+		</header>
+
+
+		<div class="main">
+			<div class="title">
+				<h1>Image Crawler</h1>
+			</div>
+
+			<section class="feature-sec">
+				<h2>How it works</h2>
+				<ul>
+					<li>Pressing the submit button on this page will make a POST
+						request to /main</li>
+					<li>That request will contain a form parameter with the url
+						populated in the input box below</li>
+					<li>The ImageFinder servlet will respond to the request with a
+						list of image urls</li>
+					<li>This page contains javascript to send the request and use the
+						response to build a list of images</li>
+				</ul>
+			</section>
+
+			<div class="content" id="form-start">
+				<div class="input">
+					<form>
+						<label for="request-webliknk-id"><abbr title="required">*</abbr>Enter a link: </label>
+						<input id="weblink-field" type="text" name="url" placeholder="www.domain.com">
+					</form>
+					<div id="sub-div">
+						<input id="sub-button" type="submit" name="submit" value="Submit">
+						<!-- <button id="sub-button" type="button">Get Imgages!</button> -->
+					</div>
+				</div>
+
+				<div class="hidden" class="searching" id="hidden-searching">
+					<p class="prompt">Crawling for images...Please be patient...</p>
+					<div class="loading">
+						<img id="loading" src="image/loading_icon.gif" alt="loading">
+					</div>
+				</div>
+
+				<div class="output">
+					<ul class="results">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="totop">
+				<a href="#form-start"><img id="totop-icon" src="image/totop-icon.png" alt="to top icon"></a>
+			</div>
+			<div class="footbox-all">
+				<div class="footbox">
+					<div class="foot-double-line">
+					</div>
+					<div class="foot-info">
+						<p class="foot-myname">Yunqin Wang</p>
+						<p class="foot-myidentity">Web Developer</p>
+						<p class="foot-contact">Contact:<br /><a class="contact-link"
+								href="mailto:yw652@cornell.edu">yw652@cornell.edu</a></p>
+					</div>
+				</div>
+				<div class="foot-logo">
+					<p class="foot-page-firstline">Image</p>
+					<p class="foot-page-secondline">Crawler</p>
+					<div class="foot-circle">
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			var resultList = document.querySelector('ul.results');
+			var urlInput = document.querySelector('input[name=url]')
+			var element = document.getElementById("hidden-searching");
+
+			apiCallBack = function (xhr, callback) {
+				if (xhr.readyState == XMLHttpRequest.DONE) {
+					if (xhr.status != 200) {
+						let message = xhr.status + ":" + xhr.statusText + ":"
+							+ xhr.responseText;
+						alert(message);
+						throw 'API call returned bad code: ' + xhr.status;
+					}
+					let response = xhr.responseText ? JSON.parse(xhr.responseText)
+						: null;
+					if (callback) {
+						callback(response);
+					}
+				}
+			}
+
+			updateList = function (response) {
+				console.log(response);
+				resultList.innerHTML = '';
+				for (var i = 0; i < response.length; i++) {
+
+					var img = document.createElement("img");
+					img.width = 200;
+					img.src = response[i];
+					resultList.appendChild(img);
+				}
+				resultList.classList.remove("hidden");
+				element.classList.add("hidden");
+			}
+
+			makeApiCall = function (url, method, obj, callback) {
+				let xhr = new XMLHttpRequest();
+				xhr.open(method, url);
+				xhr.onreadystatechange = apiCallBack.bind(null, xhr, callback);
+				xhr.send(obj ? obj instanceof FormData || obj.constructor == String ? obj : JSON.stringify(obj) : null);
+				finish = true;
+			}
+
+
+			document.querySelector('#sub-button').addEventListener("click", function (event) {
+				resultList.classList.add("hidden");
+				element.classList.remove("hidden");
+				event.preventDefault();
+				makeApiCall('/main?url=' + urlInput.value, 'POST', null, updateList);
+			});
+
+
+
+		</script>
+	</body>
+
+</html>

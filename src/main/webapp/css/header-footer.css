@@ -1,0 +1,272 @@
+/* width */
+header{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* circle */
+.head-circle,.foot-circle{
+  filter: blur(15px);
+  z-index: 0;
+}
+.head-circle{
+  width: 600px;
+  height: 650px;
+  border-radius: 50%;
+  position: absolute;
+  top: -470px;
+  left:2%;
+}
+.foot-circle{
+  margin-top: -60%;
+  padding: 10% 0% 0% 10%;
+  height: 200px;
+  border-radius: 100% 100% 30% 50%;
+}
+.head-circle{
+  box-shadow: 0 0 130px 0px #f6814b;
+  background: linear-gradient(160deg,#ffd9c6 60%,#ee521e, #733f26 97%);
+}
+.foot-circle{
+  box-shadow: 0 0 100px 0px #f6814b;
+  background: linear-gradient(160deg,#ffd9c6 20%,#ee521e, #733f26 97%);
+}
+
+
+/*  page title: image crawler*/
+p[class*="head-page"], p[class*="foot-page"]{
+  z-index: 1;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: -1px -2px #666666;
+  text-align: right;
+}
+p[class*="head-page"]{
+  position: absolute;
+  width: 200px;
+  left:280px;
+}
+p[class*="foot-page"]{
+  position: relative;
+  left:-20px;
+}
+
+.head-page-firstline, .foot-page-firstline{
+  font-size: 30px;
+  margin-top: 15px;
+}
+.head-page-secondline::first-letter, .foot-page-secondline::first-letter{
+  font-size: 70px;
+}
+.head-page-secondline{
+  margin-top: 30px;
+  font-size: 40px;
+}
+.foot-page-firstline{
+  bottom: -100px;
+}
+ .foot-page-secondline{
+  font-size: 40px;
+  bottom: -35px;
+}
+
+
+/* double line decoratoin */
+.head-frame, .head-double-line{
+  width:50%;
+  margin-left: auto;
+  margin-right: 0%;
+  text-align: right;
+}
+.head-double-line{
+  padding-bottom:3px;
+  border-top: 1px solid  #dac494;
+  border-bottom: 3px solid  #dac494;
+}
+.foot-double-line{
+  padding-bottom:3px;
+  border-top: 1px solid  #9d7037;
+  border-bottom: 2px solid  #9d7037;
+}
+
+
+/* head name: yunqin wang */
+.head-myname,.foot-myname{
+  font-family: 'EB Garamond','georgia',serif;
+  font-size: 28px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  color: #000000;
+  line-height: 0.8em;
+}
+.head-myname{
+  text-align: right;
+  padding-top: 30px;
+  margin-bottom: -1px;
+}
+
+/* head identity: web developer */
+.head-myidentity,.foot-myidentity{
+  color:#5e5e5e;
+  font-size: 18px;
+  font-weight:400;
+  line-height: 1em;
+}
+.head-myidentity{
+  text-align: right;
+  margin-top: 15px;
+}
+.head-frame{
+  margin-top: 4%;
+}
+
+/* foot name identity*/
+.foot-myname,.foot-myidentity{
+  text-align: left;
+  color: #fff;
+}
+.foot-myidentity{
+  margin-top: -15px;
+  margin-bottom:25px;
+}
+
+/* totop icon */
+.totop{
+  margin-left:15%;
+}
+#totop-icon{
+  width: 45px;
+  height: 45px;
+  margin-bottom: 10px;
+}
+#totop-icon:hover{
+ transform-origin: center;
+ transform: scale(1.05);
+}
+
+/* footer */
+.footbox-all{
+  width:70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #bbbbbb;
+  /* background: linear-gradient(#ffffff,#c1c1c1); */
+  padding: 2% 15%;
+}
+.footbox{
+  width:55%;
+  margin-right: 15%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+}
+.foot-circle{
+  opacity: 0.9;
+}
+.foot-logo{
+  width: 25%;
+}
+.foot-info {
+ font-size: 16px;
+ font-weight:300;
+ line-height: 1.5em;
+ }
+.foot-info{
+  color: #fff;
+}
+
+
+@media screen and (max-width:600px){
+  .head-circle{
+    width: 500px;
+    height: 450px;
+    left:-40%;
+    top: -300px;
+  }
+  p[class*="head-page"]{
+    top:-5px;
+   left:20px;
+    
+  }
+  .head-myname{
+    padding-top: 150px;
+  }
+  .head-page{
+    left:30px;
+  }
+  .head-frame, .head-double-line{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .foot-double-line{
+    margin-top:50px;
+  }
+
+  .footbox-all{
+    width:80%;
+    padding: 0% 10%;
+  }
+  .footbox{
+    width:100%;
+    margin: 0% 0%;
+    padding: 0%;
+    
+  }
+  .foot-logo{
+    margin-top: -120px;
+    margin-left:60%;
+    width:40%;
+  }
+  .foot-circle{
+    height: 150px;
+    margin-top: -60%;
+  }
+  .foot-page-secondline::first-letter{
+  font-size: 50px;
+}
+  .foot-page-firstline{
+    bottom: -120px;
+    font-size: 20px;
+  }
+  .foot-page-secondline{
+    bottom: -90px;
+    font-size: 20px;
+  }
+  #totop-icon{
+    padding-left: 2%;
+  }
+}
+
+
+/* tablets */
+  @media screen and (min-width:600px) and (max-width:900px){
+    .head-circle{
+      width: 500px;
+      height: 450px;
+      left:-18%;
+      top: -300px;
+    }
+    p[class*="head-page"]{
+      top:-5px;
+      left: 8%;
+    }
+    .footbox-all{
+      width:85%;
+      padding: 0% 7.5%;
+    }
+    .foot-page-secondline::first-letter{
+      font-size: 60px;
+    }
+    p[class*="foot-page"]{
+      font-size: 25px;
+    }
+    .foot-page-secondline{
+    bottom: -50px;
+    }
+    #totop-icon{
+      padding-left: 7.5%;
+    }
+  }

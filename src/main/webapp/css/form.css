@@ -1,0 +1,49 @@
+/* form */
+#hidden-searching{
+  margin-top:12%;
+}
+.prompt{
+  text-align:center;
+}
+.loading{
+  width:20%;
+  margin:auto;
+}
+#loading{
+width:100%
+}
+
+.hidden{
+  display: none;
+}
+abbr{
+  color: #88cbe0;
+  padding-right: 2px;
+}
+label{
+  font-size:25px;
+  color:#88cbe0;
+}
+
+.input{
+  width:60%;
+  margin:0 auto;
+}
+#weblink-field{
+    margin-top:5%;
+    width:100%;
+}
+#sub-div{
+    width:40%;
+    max-width:220px;
+    min-width:180px;
+    margin:5% auto;
+}
+#sub-button{
+  color: #e4b443;
+  width:100%; 
+  text-align: center;
+}
+
+
+
